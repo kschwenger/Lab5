@@ -16,7 +16,7 @@ with open('Lab5.txt', 'w') as f:
   json.dump(data2send,f)
 
 # send data to thingspeak
-GETparams = {"api_key":R4BNKNSZSPTZ7IXD, 1:StepperAngle}
+GETparams = {"api_key":R4BNKNSZSPTZ7IXD, key1:StepperAngle}
 GETparams = urlencode(GETparams) # format dict as GET string
 url = "https://api.thingspeak.com/update"
 response = urlopen(url + "?" + GETparams) # send GET request
