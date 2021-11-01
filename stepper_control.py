@@ -14,7 +14,7 @@ with open('Lab5.txt', 'w') as f:
 print('Content-type:text/html\n\n')
 print('<html>') 
 print('Select Stepper Angle <br>')
-print('<form action="/cgi-bin/stepper_control.cgi" method="POST">')
+print('<form action="/cgi-bin/stepper_control.py" method="POST">')
 print('<br>')
 print('0 deg <input type="range" name="slider" min ="0" max="360" value ="180"/> 360 deg <br>')
 print('<br>')
