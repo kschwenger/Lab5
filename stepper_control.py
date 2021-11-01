@@ -12,7 +12,10 @@ with open('Lab5.txt', 'w') as f:
   json.dump(data2send,f)
 
 print('Content-type:text/html\n\n')
-print('<html>') 
+print('<html>')
+
+print('Previous selection: ' + Selection + ' ' + StepperAngle + '<br>')
+print('<br>')
 print('Select Stepper Angle <br>')
 print('<form action="/cgi-bin/stepper_control.py" method="POST">')
 print('<br>')
