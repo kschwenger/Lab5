@@ -3,10 +3,11 @@ import cgi
 import json
 
 # get data from html form
-dataFromhtml = cgi.FieldStorage()
-Selection = dataFromhtml.getvalue('stepper_submit')
-StepperAngle = dataFromhtml.getvalue('slider')
+#dataFromhtml = cgi.FieldStorage()
+#Selection = dataFromhtml.getvalue('stepper_submit')
+#StepperAngle = dataFromhtml.getvalue('slider')
 
+"""
 # consider sending both selection and angle no matter what, and doing if in the background code
 if Selection == Apply_Angle:
   # save StepperAngle to text file
@@ -16,7 +17,7 @@ elif Selection == Zero_Stepper:
   data2send = {"selection":Selection}
 with open('Lab5.txt', 'w') as f:
   json.dump(data2send,f)
-
+"""
 print("""
 
 Content-type:text/html\n\n 
