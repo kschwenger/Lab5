@@ -49,7 +49,7 @@ class Stepper:
       dir = 1
     elif steps < currentsteps:
       dir = -1
-    __moveSteps(steps, dir)
+    moveSteps(steps, dir)
     currentangle = angle
 
   #def zero():
