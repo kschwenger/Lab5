@@ -1,7 +1,23 @@
+import RPi.GPIO as GPIO
+import time
+
 class Stepper:
+
+  # Define the pin sequence for counter-clockwise motion, noting that
+  # two adjacent phases must be actuated together before stepping to
+  # a new phase so that the rotor is pulled in the right direction:
+  sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
+  [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]
+
+  state = 0 # current position in stator sequence
+
+  led = 17 # led pin 
 
   def __init__(self, pins):
     self.pins = pins
+    GPIO.setmode(GPIO.BCM)
+    for pin in pins:
+      GPIO.setup(pin, GPIO.OUT, initial=0)
 
   def delay_us(tus): 
     # use microseconds to improve time resolution
@@ -25,7 +41,20 @@ class Stepper:
     for step in range(steps):
       halfstep(dir)
 
-  def goAngle(self, angle):
-    #convert angle to steps (0.703 deg/step)
-    steps = angle/0.703
+  def goAngle(self, angle, currentangle):
+    #convert angles to steps (0.703 deg/step)
+    currentsteps = float(currentangle)/0.703
+    steps = float(angle/0.703)
+    if steps > currentsteps:
+      dir = 1
+    elif steps < currentsteps:
+      dir = -1
     moveSteps(steps, dir)
+    currentangle = angle
+
+  #def zero():
+    # halfstep until led is blocked
+    #while read(0) > 10:
+      #GPIO.output(led, 1)
+      #halfstep(1)
+      

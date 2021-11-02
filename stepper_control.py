@@ -15,8 +15,8 @@ if Selection == "Zero_Stepper":
 elif Selection == "Apply_Angle":
   StepperAngle = dataFromhtml.getvalue('slider')
 
-# save data to text file
-data2send = {"stepper_submit":Selection, "slider":StepperAngle}
+# save data to text file for background code to perform GPIO actions
+data2send = {"selection":Selection, "angle":StepperAngle}
 with open('Lab5.txt', 'w') as f:
   json.dump(data2send,f)
 
