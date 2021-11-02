@@ -41,7 +41,7 @@ class Stepper:
     for step in range(steps):
       halfstep(dir)
 
-  def goAngle(self, angle, currentangle):
+  def goAngle(angle, currentangle):
     #convert angles to steps (0.703 deg/step)
     currentsteps = float(currentangle)/0.703
     steps = float(angle/0.703)
