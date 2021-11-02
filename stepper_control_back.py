@@ -19,10 +19,10 @@ currentangle = 0 # current angle (start at zero)
 with open('Lab5.txt', 'r') as f:
   data = json.load(f)
 
-if data['selection'] == "Apply_Angle":
+if data['stepper_submit'] == "Apply_Angle":
   # turn stepper to angle using class methods
-  myStepper.goAngle(int(data['angle']), currentangle)
-elif data['selection'] == "Zero_Stepper":
+  myStepper.goAngle(int(data['slider']), currentangle)
+elif data['stepper_submit'] == "Zero_Stepper":
   # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
   pass
   
