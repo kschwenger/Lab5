@@ -1,4 +1,3 @@
-sys.path.append(".")
 from stepper import Stepper
 from PCF8591 import PCF8591
 
