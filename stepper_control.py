@@ -8,7 +8,12 @@ from urllib.parse import urlencode # use to structure a GET string
 # get data from html form
 dataFromhtml = cgi.FieldStorage()
 Selection = dataFromhtml.getvalue('stepper_submit')
-StepperAngle = dataFromhtml.getvalue('slider')
+
+
+if Selection == "Zero_Stepper":
+  StepperAngle = 0
+elif Selection == "Apply_Angle":
+  StepperAngle = dataFromhtml.getvalue('slider')
 
 # save data to text file
 data2send = {"stepper_submit":Selection, "slider":StepperAngle}
@@ -23,12 +28,9 @@ response = urlopen(url + "?" + GETparams) # send GET request
 status = response.status # display request response
 reason = response.reason # display response reason
 
-# display user interface (same as html) updated with most recent selection
+# display updated user interface (same as html)
 print('Content-type:text/html\n\n')
 print('<html>')
-
-print('Previous selection: ' + Selection + ' ' + StepperAngle + '<br>')
-print('<br>')
 print('Select Stepper Angle <br>')
 print('<form action="/cgi-bin/stepper_control.py" method="POST">')
 print('<br>')
