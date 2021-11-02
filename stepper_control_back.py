@@ -1,3 +1,4 @@
+import sys
 from stepper import Stepper
 from PCF8591 import PCF8591
 
