@@ -25,7 +25,7 @@ class Stepper:
     while time.time() < endTime:
       pass
 
-  def __halfstep(dir):
+  def halfstep(dir):
     # dir = +/- 1 (ccw/cw)
     state += dir # increment to go forward, decrement to go backward, thats why we use +/-1
     if state > 7:
@@ -36,10 +36,10 @@ class Stepper:
       GPIO.output(pins[pin], sequence[state][pin])
     delay_us(1000) # 1 ms, this will be changed for different speeds
   
-  def __moveSteps(steps, dir):
+  def moveSteps(steps, dir):
     # move the actuation sequence a given number of halfsteps
     for step in range(steps):
-      __halfstep(dir)
+      halfstep(dir)
 
   def goAngle(self, angle, currentangle):
     #convert angles to steps (0.703 deg/step)
@@ -49,7 +49,7 @@ class Stepper:
       dir = 1
     elif steps < currentsteps:
       dir = -1
-    __moveSteps(steps, dir)
+    moveSteps(steps, dir)
     currentangle = angle
 
   #def zero():
