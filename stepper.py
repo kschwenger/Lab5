@@ -25,7 +25,7 @@ class Stepper:
     while time.time() < endTime:
       pass
 
-  def __halfstep(self, dir):
+  def __halfstep(dir):
     # dir = +/- 1 (ccw/cw)
     state += dir # increment to go forward, decrement to go backward, thats why we use +/-1
     if state > 7:
@@ -41,7 +41,7 @@ class Stepper:
     for step in range(steps):
       halfstep(dir)
 
-  def goAngle(angle, currentangle):
+  def goAngle(self, angle, currentangle):
     #convert angles to steps (0.703 deg/step)
     currentsteps = float(currentangle)/0.703
     steps = float(angle/0.703)
