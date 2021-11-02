@@ -7,7 +7,7 @@ import RPi.GPIO as GPIO
 import time
 
 # create ADC object from PCF class with specified address 
-myADC = PCF8591(0x48)
+#myADC = PCF8591(0x48)
 
 # create stepper object from Stepper class with specified pins
 pins = [12,16,20,21]
