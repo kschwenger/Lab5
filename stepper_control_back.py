@@ -15,14 +15,18 @@ myStepper = Stepper(pins)
 
 currentangle = 0 # current angle (start at zero)
 
-# read saved data from CGI code
-with open('Lab5.txt', 'r') as f:
-  data = json.load(f)
+while True:
+  # read saved data from CGI code
+  with open('Lab5.txt', 'r') as f:
+    data = json.load(f)
 
-if data['stepper_submit'] == "Apply_Angle":
-  # turn stepper to angle using class methods
-  myStepper.goAngle(int(data['slider']), currentangle)
-elif data['stepper_submit'] == "Zero_Stepper":
-  # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
-  pass
+  if data['stepper_submit'] == "Apply_Angle":
+    # turn stepper to angle using class methods
+    myStepper.goAngle(int(data['slider']), currentangle)
+  elif data['stepper_submit'] == "Zero_Stepper":
+    # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
+    pass
   
+  time.sleep(0.1)
+
+GPIO.cleanup() 
