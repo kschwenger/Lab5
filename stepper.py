@@ -74,7 +74,7 @@ class Stepper:
     # halfstep until led is blocked
     GPIO.output(self.led, 1)
     
-    while myADC.read(0) < 250:
+    while myADC.read(0) < 220:
       print(myADC.read(0))
       self.__halfstep(1)
     
