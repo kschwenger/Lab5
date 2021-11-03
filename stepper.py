@@ -76,8 +76,7 @@ class Stepper:
     time.sleep(.5)
     while myADC.read(0) < 220:
       print(myADC.read(0))
-      self.__moveSteps(100,-1)
+      self.__moveSteps(100,1)
       time.sleep(0.1)
-    
-    #GPIO.output(self.led, 0)
+    GPIO.output(self.led, 0)
       
