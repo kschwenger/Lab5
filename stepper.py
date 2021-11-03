@@ -28,10 +28,10 @@ class Stepper:
   def __halfstep(self, dir):
     # dir = +/- 1 (ccw/cw)
     self.state += dir # increment to go forward, decrement to go backward, thats why we use +/-1
-    if state > 7:
-      state = 0
-    elif state < 0:
-      state = 7
+    if self.state > 7:
+      self.state = 0
+    elif self.state < 0:
+      self.state = 7
     for pin in range(4): # 4 pins that need to be energized
       GPIO.output(pins[pin], sequence[state][pin])
     delay_us(1000) # 1 ms, this will be changed for different speeds
