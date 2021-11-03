@@ -79,4 +79,5 @@ class Stepper:
       self.__moveSteps(100,1)
       time.sleep(0.1)
     GPIO.output(self.led, 0)
+    self.currentangle = 0
       
