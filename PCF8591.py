@@ -1,3 +1,5 @@
+import smbus
+
 class PCF8591:
 
   def __init__(self,address):
