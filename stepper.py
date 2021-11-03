@@ -45,16 +45,21 @@ class Stepper:
       self.__halfstep(dir)
 
   def goAngle(self, angle):
-    
-    
-    #convert angles to steps (0.703 deg/step)
+
+    # find difference in angles, convert to steps (512*8 = 4096 halfsteps per 360 deg rotation)    
     steps = int(4096*abs(angle - self.currentangle)/360)
-    
+
     if angle > self.currentangle:
-      dir = 1
-    elif angle < self.currentangle:
-      dir = -1
-    
+      if ((self.currentangle - 0) + (360 - angle)) > (angle - self.currentangle):
+        dir = -1
+      else:
+        dir = 1
+    else:
+      if (self.currentangle - angle) > ((360 - self.currentangle) + (angle - 0)):
+        dir = -1
+      else:
+        dir = 1
+      
     self.__moveSteps(steps, dir)
     
     self.currentangle = angle
