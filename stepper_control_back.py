@@ -28,7 +28,7 @@ while True:
     pass
   
   with open('Lab5.txt', 'w') as f:
-    json.dump("",f)
+    json.dump(" ",f)
 
   time.sleep(.1)
 
