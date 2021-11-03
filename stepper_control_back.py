@@ -27,8 +27,8 @@ while True:
     # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
     pass
   
-  with open('Lab5.txt', 'w') as f:
-    json.dump(" ",f)
+  #with open('Lab5.txt', 'w') as f:
+    #json.dump(" ",f)
 
   time.sleep(.1)
 
