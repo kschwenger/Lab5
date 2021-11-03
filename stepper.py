@@ -55,17 +55,17 @@ class Stepper:
     steps = int(4096*abs(angle - self.currentangle)/360)
 
     # determine direction for shortest path with if statements
-    if abs(self.currentangle - angle) < 180:
-      if self.currentangle > angle:
-        dir = 1
-      else:
+    if abs(angle - self.currentangle) > 180:
+      if angle > self.currentangle:
         dir = -1
+      else:
+        dir = 1
     else:
-      if self.currentangle > angle:
+      if angle > self.currentangle:
         dir = 1
       else:
         dir = -1
-    
+
     # move given number of steps and in specified direction
     self.__moveSteps(steps, dir)
     
