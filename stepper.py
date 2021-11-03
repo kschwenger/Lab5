@@ -69,7 +69,7 @@ class Stepper:
     
     self.currentangle = angle
 
-  def zero():
+  def zero(self):
     # halfstep until led is blocked
     GPIO.output(led, 1)
     
