@@ -42,10 +42,10 @@ class Stepper:
       self.state = 7
     for pin in range(4): # 4 pins that need to be energized
       GPIO.output(self.pins[pin], self.sequence[self.state][pin])
-    self.__delay_us(1000) # 1 ms, this will be changed for different speeds
+    self.__delay_us(1000) # 1 ms, this can be changed for different speeds
   
   def __moveSteps(self, steps, dir):
-    # move the actuation sequence a given number of halfsteps
+    # move the actuation sequence a specified number of halfsteps in a direction
     for step in range(int(steps)):
       self.__halfstep(dir)
 
@@ -54,7 +54,7 @@ class Stepper:
     # find difference in angles, convert to steps (512*8 = 4096 halfsteps per 360 deg rotation)    
     steps = int(4096*abs(angle - self.currentangle)/360)
 
-    # determine direction for shortest path
+    # determine direction for shortest path with if statements
     if abs(self.currentangle - angle) < 180:
       if self.currentangle > angle:
         dir = 1
@@ -65,19 +65,18 @@ class Stepper:
         dir = 1
       else:
         dir = -1
-      
+    
+    # move given number of steps and in specified direction
     self.__moveSteps(steps, dir)
     
+    # reset current angle
     self.currentangle = angle
 
-  def zero(self):
-    # halfstep until led is blocked
-    GPIO.output(self.led, 1)
-    time.sleep(.5)
-    while myADC.read(0) < 220:
-      print(myADC.read(0))
+  def zero(self): # halfstep until led is blocked
+    GPIO.output(self.led, 1)  # turn on led
+    time.sleep(.5)  # give time for PCF to read
+    while myADC.read(0) < 220:  # move 100 steps forward until led is blocked
       self.__moveSteps(100,1)
-      time.sleep(0.1)
-    GPIO.output(self.led, 0)
-    self.currentangle = 0
+    GPIO.output(self.led, 0)  # turn off led
+    self.currentangle = 0 # set current angle to 0
       

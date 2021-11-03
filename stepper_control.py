@@ -9,10 +9,9 @@ from urllib.parse import urlencode # use to structure a GET string
 dataFromhtml = cgi.FieldStorage()
 Selection = dataFromhtml.getvalue('stepper_submit')
 
-
-if Selection == "Zero_Stepper":
+if Selection == "Zero_Stepper": # if user selects zero stepper, set angle as 0
   StepperAngle = 0
-elif Selection == "Apply_Angle":
+elif Selection == "Apply_Angle":  # if user changes angle, set set angle as whatever they picked
   StepperAngle = dataFromhtml.getvalue('slider')
 
 # save data to text file for background code to perform GPIO actions
@@ -31,6 +30,10 @@ reason = response.reason # display response reason
 # display updated user interface (same as html)
 print('Content-type:text/html\n\n')
 print('<html>')
+print('<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1556318/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Motor+Angle+vs.+Time&type=line&xaxis=Time&yaxis=Motor+Angle"></iframe>')
+print('<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1556318/widgets/375188"></iframe>')
+print('<br>')
+print('<br>')
 print('Select Stepper Angle <br>')
 print('<form action="/cgi-bin/stepper_control.py" method="POST">')
 print('<br>')
@@ -43,9 +46,5 @@ print('Or')
 print('<br>')
 print('<br>')
 print('<input type="submit" name="stepper_submit" value="Zero_Stepper">')
-print('<br>')
-print('<br>')
 print('</form>')
-print('<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1556318/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&title=Motor+Angle+vs.+Time&type=line&xaxis=Time&yaxis=Motor+Angle"></iframe>')
-print('<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/1556318/widgets/375188"></iframe>')
 print('</html>')
