@@ -35,7 +35,7 @@ print('<iframe width="450" height="260" style="border: 1px solid #cccccc;" src="
 print('<br>')
 print('<br>')
 print('Select Stepper Angle <br>')
-print('<form action="/cgi-bin/stepper_control.py" method="POST">')
+print('<form action="/cgi-bin/stepper_control.cgi" method="POST">')
 print('<br>')
 print('0 deg <input type="range" name="slider" min ="0" max="360" value ="180"/> 360 deg <br>')
 print('<br>')
