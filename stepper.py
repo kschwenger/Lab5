@@ -39,7 +39,7 @@ class Stepper:
   def __moveSteps(self, steps, dir):
     # move the actuation sequence a given number of halfsteps
     for step in range(steps):
-      self.halfstep(dir)
+      self.__halfstep(dir)
 
   def goAngle(self, angle, currentangle):
     #convert angles to steps (0.703 deg/step)
@@ -49,7 +49,7 @@ class Stepper:
       dir = 1
     elif steps < currentsteps:
       dir = -1
-    self.moveSteps(steps, dir)
+    self.__moveSteps(steps, dir)
     currentangle = angle
 
   #def zero():
