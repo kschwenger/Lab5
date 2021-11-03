@@ -11,6 +11,8 @@ class Stepper:
     for pin in pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
     
+    self.currentangle = 0
+
     self.state = 0  # current position in stator sequence
     
     # Define the pin sequence for counter-clockwise motion, noting that
@@ -42,20 +44,20 @@ class Stepper:
     for step in range(int(steps)):
       self.__halfstep(dir)
 
-  def goAngle(self, angle, currentangle):
+  def goAngle(self, angle):
     
     
     #convert angles to steps (0.703 deg/step)
-    steps = int(4096*abs(angle - currentangle)/360)
+    steps = int(4096*abs(angle - self.currentangle)/360)
     
-    if angle > currentangle:
+    if angle > self.currentangle:
       dir = 1
-    elif angle < currentangle:
+    elif angle < self.currentangle:
       dir = -1
     
     self.__moveSteps(steps, dir)
     
-    currentangle = angle
+    self.currentangle = angle
 
   #def zero():
     # halfstep until led is blocked
