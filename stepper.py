@@ -44,10 +44,10 @@ class Stepper:
   def goAngle(self, angle, currentangle):
     #convert angles to steps (0.703 deg/step)
     currentsteps = float(currentangle)/0.703
-    steps = float(angle/0.703)
-    if steps > currentsteps:
+    self.steps = float(angle/0.703)
+    if self.steps > currentsteps:
       dir = 1
-    elif steps < currentsteps:
+    elif self.steps < currentsteps:
       dir = -1
     moveSteps(self.steps, dir)
     currentangle = angle
