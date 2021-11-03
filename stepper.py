@@ -7,15 +7,18 @@ myADC = PCF8591(0x48)
 
 class Stepper:
 
-  def __init__(self, pins):
-    self.pins = pins
+  def __init__(self, pins, led):
+    self.pins = pins  # stepper motor pins
+
+    self.led = led # led pin
     
-    GPIO.setmode(GPIO.BCM)
+    GPIO.setmode(GPIO.BCM)  # gpio setup
     GPIO.setwarnings(False)
+    GPIO.setup(self.led, GPIO.OUT, initial=0)
     for pin in pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
     
-    self.currentangle = 0
+    self.currentangle = 0 # store current angular position
 
     self.state = 0  # current position in stator sequence
     
@@ -23,8 +26,6 @@ class Stepper:
     # two adjacent phases must be actuated together before stepping to
     # a new phase so that the rotor is pulled in the right direction:
     self.sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],[0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]
-    
-    self.led = 17 # led pin
 
   def __delay_us(self, tus): 
     # use microseconds to improve time resolution
@@ -71,7 +72,7 @@ class Stepper:
 
   def zero(self):
     # halfstep until led is blocked
-    GPIO.output(self.led, 1)
+    GPIO.output(led, 1)
     
     while myADC.read(0) > 10:
       self.__halfstep(1)
