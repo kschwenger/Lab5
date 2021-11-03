@@ -52,19 +52,21 @@ class Stepper:
   def goAngle(self, angle):
 
     # find difference in angles, convert to steps (512*8 = 4096 halfsteps per 360 deg rotation)    
-    steps = int(4096*abs(angle - self.currentangle)/360)
-
     # determine direction for shortest path with if statements
     if angle > self.currentangle:
       if ((self.currentangle - 0) + (360 - angle)) < (angle - self.currentangle):
         dir = -1
+        steps = 4096 - int(4096*abs(angle - self.currentangle)/360)
       else:
         dir = 1
+        steps = int(4096*abs(angle - self.currentangle)/360)
     else:
       if ((360 - self.currentangle) + (angle - 0)) < (self.currentangle - angle):
         dir = 1
+        steps = 4096 - int(4096*abs(angle - self.currentangle)/360)
       else:
         dir = -1
+        steps = int(4096*abs(angle - self.currentangle)/360)
 
     # move given number of steps and in specified direction
     self.__moveSteps(steps, dir)
