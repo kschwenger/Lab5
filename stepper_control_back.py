@@ -23,7 +23,7 @@ while True:
   if data['stepper_submit'] == "Apply_Angle":
     # turn stepper to angle using class methods
     myStepper.goAngle(int(data['slider']), currentangle)
-    print("Turning to angle " + int(data['slider']))
+    print("Turning to angle " + data['slider'])
   elif data['stepper_submit'] == "Zero_Stepper":
     # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
     pass
