@@ -27,7 +27,7 @@ class Stepper:
 
   def __halfstep(self, dir):
     # dir = +/- 1 (ccw/cw)
-    state += dir # increment to go forward, decrement to go backward, thats why we use +/-1
+    self.state += dir # increment to go forward, decrement to go backward, thats why we use +/-1
     if state > 7:
       state = 0
     elif state < 0:
