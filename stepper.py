@@ -43,9 +43,10 @@ class Stepper:
       self.__halfstep(dir)
 
   def goAngle(self, angle, currentangle):
-   
+    
+    
     #convert angles to steps (0.703 deg/step)
-    steps = (abs(angle - currentangle))/0.703
+    steps = (abs(angle - currentangle))/0.703125
     
     if angle > currentangle:
       self.dir = 1

@@ -13,7 +13,7 @@ import time
 pins = [12,16,20,21]
 myStepper = Stepper(pins)
 
-currentangle = 66 # current angle (start at zero)
+currentangle = 0 # current angle (start at zero)
 
 while True:
   # read saved data from CGI code
