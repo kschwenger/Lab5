@@ -3,21 +3,21 @@ import time
 
 class Stepper:
 
-  # Define the pin sequence for counter-clockwise motion, noting that
-  # two adjacent phases must be actuated together before stepping to
-  # a new phase so that the rotor is pulled in the right direction:
-  sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],
-  [0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]
-
-  state = 0 # current position in stator sequence
-
-  led = 17 # led pin 
-
   def __init__(self, pins):
     self.pins = pins
+    
     GPIO.setmode(GPIO.BCM)
     for pin in pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
+    
+    self.state = 0  # current position in stator sequence
+    
+    # Define the pin sequence for counter-clockwise motion, noting that
+    # two adjacent phases must be actuated together before stepping to
+    # a new phase so that the rotor is pulled in the right direction:
+    self.sequence = [ [1,0,0,0],[1,1,0,0],[0,1,0,0],[0,1,1,0],[0,0,1,0],[0,0,1,1],[0,0,0,1],[1,0,0,1] ]
+    
+    self.led = 17 # led pin
 
   def __delay_us(self, tus): 
     # use microseconds to improve time resolution
