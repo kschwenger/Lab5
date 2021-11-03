@@ -46,7 +46,7 @@ class Stepper:
     
     
     #convert angles to steps (0.703 deg/step)
-    steps = (abs(angle - currentangle))/0.703125
+    steps = int(4096*abs(angle - currentangle)/360)
     
     if angle > currentangle:
       self.dir = 1
