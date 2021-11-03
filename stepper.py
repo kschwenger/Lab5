@@ -61,7 +61,7 @@ class Stepper:
         dir = 1
         steps = int(4096*abs(angle - self.currentangle)/360)
     else:
-      if ((360 - self.currentangle) + (angle - 0)) < (self.currentangle - angle):
+      if ((360 - self.currentangle) + (angle - 0)) <= (self.currentangle - angle):
         dir = 1
         steps = 4096 - int(4096*abs(angle - self.currentangle)/360)
       else:
