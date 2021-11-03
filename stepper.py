@@ -45,9 +45,9 @@ class Stepper:
     #convert angles to steps (0.703 deg/step)
     currentsteps = float(currentangle)/0.703
     steps = float(angle/0.703)
-    if self.steps > currentsteps:
+    if steps > currentsteps:
       dir = 1
-    elif self.steps < currentsteps:
+    elif steps < currentsteps:
       dir = -1
     moveSteps(self.steps, dir)
     currentangle = angle
