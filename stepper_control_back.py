@@ -27,6 +27,6 @@ while True:
     # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
     pass
   
-  time.sleep(0.1)
+  time.sleep(15)
 
 GPIO.cleanup() 
