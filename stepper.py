@@ -51,11 +51,11 @@ class Stepper:
     steps = int(4096*abs(angle - self.currentangle)/360)
     
     if angle > self.currentangle:
-      dir = 1
+      self.dir = 1
     elif angle < self.currentangle:
-      dir = -1
+      self.dir = -1
     
-    self.__moveSteps(steps, dir)
+    self.__moveSteps(steps, self.dir)
     
     self.currentangle = angle
 
