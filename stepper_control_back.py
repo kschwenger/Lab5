@@ -26,12 +26,12 @@ while True:
     print("Turning to angle " + data['slider'])
   elif data['stepper_submit'] == "Zero_Stepper":
     # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
-    pass
+    print("Zeroing Stepper")
   
-data2send = {"stepper_submit":" ", "slider":" "}
-with open('Lab5.txt', 'w') as f:
-  json.dump(data2send,f)
-
-time.sleep(.1)
+  data2send = {"stepper_submit":" ", "slider":" "}
+  with open('Lab5.txt', 'w') as f:
+    json.dump(data2send,f)
+  
+  time.sleep(.1)
 
 GPIO.cleanup() 
