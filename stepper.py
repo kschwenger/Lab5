@@ -47,10 +47,10 @@ class Stepper:
     currentsteps = float(currentangle)/0.703
     steps = float(angle/0.703)
     if steps > currentsteps:
-      dir = 1
+      self.dir = 1
     elif steps < currentsteps:
-      dir = -1
-    self.__moveSteps(steps, dir)
+      self.dir = -1
+    self.__moveSteps(steps, self.dir)
     currentangle = angle
 
   #def zero():
