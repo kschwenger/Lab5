@@ -54,7 +54,7 @@ class Stepper:
     # find difference in angles, convert to steps (512*8 = 4096 halfsteps per 360 deg rotation)    
     # determine direction for shortest path with if statements
     if angle > self.currentangle:
-      if ((self.currentangle - 0) + (360 - angle)) < (angle - self.currentangle):
+      if ((self.currentangle - 0) + (360 - angle)) <= (angle - self.currentangle):
         dir = -1
         steps = 4096 - int(4096*abs(angle - self.currentangle)/360)
       else:
