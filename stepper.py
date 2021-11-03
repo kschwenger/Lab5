@@ -7,6 +7,7 @@ class Stepper:
     self.pins = pins
     
     GPIO.setmode(GPIO.BCM)
+    GPIO.setwarnings(False)
     for pin in pins:
       GPIO.setup(pin, GPIO.OUT, initial=0)
     
