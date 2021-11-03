@@ -51,6 +51,7 @@ class Stepper:
       self.dir = 1
     elif angle < currentangle:
       self.dir = -1
+    
     self.__moveSteps(steps, self.dir)
     
     currentangle = angle
