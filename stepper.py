@@ -7,10 +7,10 @@ myADC = PCF8591(0x48)
 
 class Stepper:
 
-  def __init__(self, pins, led):
+  def __init__(self, pins):
     self.pins = pins  # stepper motor pins
 
-    self.led = led # led pin
+    self.led = 17 # led pin
     
     GPIO.setmode(GPIO.BCM)  # gpio setup
     GPIO.setwarnings(False)
@@ -72,11 +72,11 @@ class Stepper:
 
   def zero(self):
     # halfstep until led is blocked
-    GPIO.output(led, 1)
+    GPIO.output(self.led, 1)
     
     while myADC.read(0) < 150:
       print(myADC.read(0))
       self.__halfstep(1)
     
-    GPIO.output(led, 0)
+    GPIO.output(self.led, 0)
       

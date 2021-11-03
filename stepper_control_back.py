@@ -11,8 +11,8 @@ import time
 
 # create stepper object from Stepper class with specified pins
 pins = [12,16,20,21]
-led = 17
-myStepper = Stepper(pins, led)
+
+myStepper = Stepper(pins)
 
 while True:
   # read saved data from CGI code
