@@ -1,5 +1,9 @@
 import RPi.GPIO as GPIO
 import time
+from PCF8591 import PCF8591
+
+# create ADC object from PCF class with specified address 
+myADC = PCF8591(0x48)
 
 class Stepper:
 
@@ -65,9 +69,10 @@ class Stepper:
     
     self.currentangle = angle
 
-  #def zero():
+  def zero():
     # halfstep until led is blocked
-    #while read(0) > 10:
-      #GPIO.output(led, 1)
-      #halfstep(1)
+    GPIO.output(led, 1)
+    
+    while myADC.read(0) > 10:
+      self.__halfstep(1)
       

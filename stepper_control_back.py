@@ -24,6 +24,7 @@ while True:
     print("Turning to angle " + data['slider'])
   elif data['stepper_submit'] == "Zero_Stepper":
     # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
+    myStepper.zero()
     print("Zeroing Stepper")
   
   data2send = {"stepper_submit":" ", "slider":" "}
