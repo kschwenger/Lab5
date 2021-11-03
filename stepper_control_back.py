@@ -21,12 +21,12 @@ while True:
 
   if data['stepper_submit'] == "Apply_Angle":
     # turn stepper to angle using class methods
-    myStepper.goAngle(int(data['slider']))
     print("Turning to angle " + data['slider'])
+    myStepper.goAngle(int(data['slider']))
   elif data['stepper_submit'] == "Zero_Stepper":
     # turn stepper until led is blocked using class methods (and reading ADC from PCF class method)
     myStepper.zero()
-    print("Zeroing Stepper")
+    print("Stepper Zeroed")
   
   data2send = {"stepper_submit":" ", "slider":" "}
   with open('Lab5.txt', 'w') as f:
